@@ -17,7 +17,7 @@ var showPanels = function(){
     var incDelay = function(){
         delay +=90;
         return delay;
-    }
+    };
     $('#insertPanel').delay(incDelay()).fadeIn();
     panels.forEach(function (entry) {
         $('#'+entry).delay(incDelay()).fadeIn();
@@ -40,10 +40,12 @@ var showLog = function(id){
 
 var fillSourceList = function () {
 
+    console.log("yo");
+
     var sourceEntry = function (id, lastLogId, url, filename, lastImport) {
 
         var panelId = "sourcePanel"+id;
-        var buttonId =  "sourceId"+id;
+        var buttonId = "sourceId"+id;
         var linkId =  "log"+lastLogId;
         //
         var string = '<div class="panel panel-default" id="'+panelId+'" style="display: none;">' +
@@ -71,7 +73,7 @@ var fillSourceList = function () {
         buttons.push(buttonId);
         links.push(linkId);
         return string;
-    }
+    };
 
     jQuery.ajax({
         type: "GET",
@@ -86,8 +88,8 @@ var fillSourceList = function () {
 
                 showPanels();
             }
-        },
 
+        },
         fail: function (){console.log("fail")},
         async:      true,
         crossDomain:true
@@ -127,6 +129,7 @@ var retrieveLog = function(id){
 }
 
 var submitButtonAction = function () {
+    console.log("submit");
     var sourceUrl = $("#url_field").val();
     var sourceFilename = $("#filename_field").val();
     jQuery.ajax({

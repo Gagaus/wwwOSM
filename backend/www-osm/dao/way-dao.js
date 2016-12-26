@@ -137,8 +137,8 @@ var getPolygonsByBBox = function(callback) {
      The callback object includes the way builder method call and the one for the exposure
      of the information via JSON.
      */
-    //console.log(_params);
     database.execute(queries.getPolygonsByBbox(list), _params , callback);
+    console.log(queries.getPolygonsByBbox(list));
 };
 
 /**

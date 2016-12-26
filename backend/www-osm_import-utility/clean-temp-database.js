@@ -38,4 +38,6 @@ var GIS = params.GIS;
 /*
 execute the clean process
  */
+
+console.log("cleaning");
 database.execute(GIS, queries.cleanTemp(), [], {list: [debug.end]});

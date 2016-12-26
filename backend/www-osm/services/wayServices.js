@@ -78,7 +78,7 @@ function listen (router){
 
     router.post('/bbox', function(request, response) {
 
-        //console.log(JSON.stringify(request.post));
+        console.log(JSON.stringify(request.post));
 
         var maxLatitude =  request.post.maxLatitude;
         var maxLongitude =  request.post.maxLongitude;
