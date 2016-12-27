@@ -1,1 +1,1 @@
-node www-osm
+screen -dmS backend node www-osm

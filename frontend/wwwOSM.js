@@ -19,9 +19,9 @@ var canvas = document.getElementById("wwd");
  * @type {string}
  */
 // var endpoint = "http://wwwosm.trilogis.it/api";
-var endpoint = "http://localhost:8080";
+//var endpoint = "http://localhost:8080";
 //var endpoint = "http://192.168.199.150:8080";
-
+var endpoint = "http://ec2-35-166-171-213.us-west-2.compute.amazonaws.com:8080";
 
 /*
 disable Web World Wind logging
