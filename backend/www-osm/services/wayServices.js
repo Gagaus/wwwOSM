@@ -77,14 +77,17 @@ function listen (router){
     });
 
     router.post('/bbox', function(request, response) {
+	//console.log("Request");
+	//console.log(JSON.stringify(request.body, null, 2));
+	params = JSON.parse(Object.keys(request.body)[0]);
+	//console.log(params);	
 
-        console.log(JSON.stringify(request.post));
-
-        var maxLatitude =  request.post.maxLatitude;
-        var maxLongitude =  request.post.maxLongitude;
-        var minLatitude =  request.post.minLatitude;
-        var minLongitude =  request.post.minLongitude;
-        var lod = request.post.lod;
+        var maxLatitude =  params.maxLatitude;
+        var maxLongitude =  params.maxLongitude;
+        var minLatitude =  params.minLatitude;
+        var minLongitude =  params.minLongitude;
+        //console.log(maxLatitude, minLatitude, maxLongitude, minLongitude);
+        var lod = params.lod;
 
         var excludePolygons = [];
         var excludeLines = [];
@@ -94,6 +97,8 @@ function listen (router){
             maxLatitude,
             minLongitude,
             maxLongitude);
+
+	//console.log(lod);
 
         var _callback =
         {
