@@ -5,8 +5,10 @@
  *
  */
 
-var endpoint = "http://localhost:8080";
+//var endpoint = "http://localhost:8080";
 //var endpoint = "http://wwwosm.trilogis.it/api";
+var endpoint = "http://ec2-35-166-171-213.us-west-2.compute.amazonaws.com:8080";
+
 var currentLog = 0;
 var panels = [];
 var buttons = ['submitButton'];

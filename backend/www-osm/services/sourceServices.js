@@ -23,8 +23,8 @@ var responseUtil = require('./../services_util/response.js');
  * @param router
  */
 function listen (router){
-
     router.get('/sources', function(request, response) {
+
             var _callback =
             {
                 parameter     :   response,
@@ -36,7 +36,9 @@ function listen (router){
     });
 
     router.post('/sources', function(request, response) {
-        var source = request.post;
+        //var source = request.post;
+	var source = JSON.parse(Object.keys(request.body)[0]);
+	console.log(source);
 
         var _callback =
         {
@@ -80,3 +82,4 @@ function listen (router){
 }
 
 exports.start = listen;
+

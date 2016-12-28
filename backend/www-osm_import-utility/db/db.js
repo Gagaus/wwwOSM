@@ -27,19 +27,19 @@ var gisDatabaseUser = 'postgres';
  * Name of the main database
  * @type {string}
  */
-var gisDatabaseName = 'citysmart';
+var gisDatabaseName = 'gis';
 
 /**
  * Address of the main database
  * @type {string}
  */
-var gisDatabaseAddress = '0.0.0.0:5431';
+var gisDatabaseAddress = 'ec2-35-166-171-213.us-west-2.compute.amazonaws.com:5432';
 
 /**
  * Password of the main database
  * @type {string}
  */
-var gisDatabasePassword = 'password';
+var gisDatabasePassword = 'opengeo';
 
 /**
  * Connection string for the main database
