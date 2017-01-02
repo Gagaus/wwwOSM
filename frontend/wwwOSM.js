@@ -317,6 +317,9 @@ var drawTile = function(tile){
     /**
      * Internal use
      */
+
+console.log(tile);
+
     var isGeomEnabled = function(entity, typeId){
         var list = undefined;
 
@@ -338,6 +341,8 @@ var drawTile = function(tile){
         return false;
     }
 
+//	console.log(tile);
+
     if (tile.draw === undefined || tile.draw === null || tile.points === null){
         tile.draw = {polygons: [], lines: [], points: []};
         buildGeometries(tile, tile.draw.polygons, tile.draw.lines, tile.draw.points, tile.geometries, false);
@@ -357,8 +362,9 @@ var drawTile = function(tile){
 
 
     tile.draw.polygons.forEach(function (entry) {
+	console.log("polygons? ");
         if (isGeomEnabled(POLYGON, entry.typeId)){
-
+		console.log("rendering");
             if (!isHighlighted(entry.osmid)){
                 renderPolygon(entry);
             }
@@ -411,8 +417,8 @@ var redrawEvent_aux = function(){
         /**
          * Internal use
          */
-        var getTileFromServer = function(tile){
-
+        var getTileFromServer = function(tile) {	
+	console.log("tile", tile);
             var request = {
                 maxLatitude : tile.sector.maxLatitude,
                 maxLongitude : tile.sector.maxLongitude,
@@ -426,6 +432,8 @@ var redrawEvent_aux = function(){
                 data: JSON.stringify(request),
                 url:   endpoint+"/bbox",
                 success: function(result) {
+                    console.log("post result", result);
+console.log("tile success", tile);		
                     tile.geometries = result.geometries;
                     do1(tile);
                 },

@@ -20,9 +20,9 @@ var send = function(callback) {
 
 var print = function(callback) {
 
-    //console.log("print");
-    //console.log("callback.rows: ");
-    //console.log(callback.rows);
+//    console.log("print");
+//    console.log("callback.rows: ");
+//    console.log(callback.rows);
 
     if (callback.obj === undefined) {
         callback.obj = {"type": "GeometryCollection", "geometries": []};
@@ -38,9 +38,9 @@ var print = function(callback) {
 
 
         for (var i in callback.rows) {
-
+	    
             var obj = callback.rows[i];
-            var geom = JSON.parse(callback.rows[i].geom);
+	    var geom = JSON.parse(callback.rows[i].geom);
 
             var toJSON = {
                 'type': geom.type,

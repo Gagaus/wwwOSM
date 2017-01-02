@@ -52,7 +52,7 @@ function listen (router){
     });
 
     router.post('/styles/polygon', function(request, response) {
-        var style = request.post;
+        var style = JSON.parse(Object.keys(request.body)[0]);
 
         if (!(style.lod && style.elevation && style.typeId && style.fillColor && style.borderColor)){
             return;
@@ -96,7 +96,7 @@ function listen (router){
 
 
     router.post('/styles/line', function(request, response) {
-        var style = request.post;
+        var style = JSON.parse(Object.keys(request.body)[0]);
 
         if (!(style.lod && style.typeId && style.fillColor)){
             return;

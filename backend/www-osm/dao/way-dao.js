@@ -138,7 +138,7 @@ var getPolygonsByBBox = function(callback) {
      of the information via JSON.
      */
     database.execute(queries.getPolygonsByBbox(list), _params , callback);
-    console.log(queries.getPolygonsByBbox(list));
+   // console.log(queries.getPolygonsByBbox(list));
 };
 
 /**
