@@ -209,7 +209,8 @@ var buildGeometries = function(tile, polygonList, lineList, pointList, geometrie
         if (entry.type === 'Polygon' || entry.type === 'MultiPolygon') {
             for (var i in entry.coordinates) {
 
-                if (entry.properties.type_id !== 40 && (entry.properties.type_id !== 1 || searchResult)){
+                // if (entry.properties.type_id !== 40 && (entry.properties.type_id !== 1 || searchResult)){
+                if (entry.properties.type_id !== 40){
 
                     var boundaries = [];
                     boundaries[0] = []; // outer boundary
@@ -372,7 +373,9 @@ var buildGeometries = function(tile, polygonList, lineList, pointList, geometrie
                     }
                 }
             }
-        } else if (entry.type === 'LineString') {
+        }
+
+        else if (entry.type === 'LineString') {
             //var _coords = [];
 
             //for (var j in entry.coordinates) {

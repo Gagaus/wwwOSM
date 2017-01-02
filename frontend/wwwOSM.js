@@ -19,9 +19,9 @@ var canvas = document.getElementById("wwd");
  * @type {string}
  */
 // var endpoint = "http://wwwosm.trilogis.it/api";
-//var endpoint = "http://localhost:8080";
+var endpoint = "http://localhost:8080";
 //var endpoint = "http://192.168.199.150:8080";
-var endpoint = "http://ec2-35-166-171-213.us-west-2.compute.amazonaws.com:8080";
+// var endpoint = "http://ec2-35-166-171-213.us-west-2.compute.amazonaws.com:8080";
 
 /*
 disable Web World Wind logging
@@ -318,8 +318,6 @@ var drawTile = function(tile){
      * Internal use
      */
 
-console.log(tile);
-
     var isGeomEnabled = function(entity, typeId){
         var list = undefined;
 
@@ -341,7 +339,6 @@ console.log(tile);
         return false;
     }
 
-//	console.log(tile);
 
     if (tile.draw === undefined || tile.draw === null || tile.points === null){
         tile.draw = {polygons: [], lines: [], points: []};
@@ -362,9 +359,7 @@ console.log(tile);
 
 
     tile.draw.polygons.forEach(function (entry) {
-	console.log("polygons? ");
         if (isGeomEnabled(POLYGON, entry.typeId)){
-		console.log("rendering");
             if (!isHighlighted(entry.osmid)){
                 renderPolygon(entry);
             }
@@ -417,8 +412,7 @@ var redrawEvent_aux = function(){
         /**
          * Internal use
          */
-        var getTileFromServer = function(tile) {	
-	console.log("tile", tile);
+        var getTileFromServer = function(tile) {
             var request = {
                 maxLatitude : tile.sector.maxLatitude,
                 maxLongitude : tile.sector.maxLongitude,
@@ -432,8 +426,6 @@ var redrawEvent_aux = function(){
                 data: JSON.stringify(request),
                 url:   endpoint+"/bbox",
                 success: function(result) {
-                    console.log("post result", result);
-console.log("tile success", tile);		
                     tile.geometries = result.geometries;
                     do1(tile);
                 },
