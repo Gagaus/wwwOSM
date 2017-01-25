@@ -277,8 +277,8 @@ var buildGeometries = function(tile, polygonList, lineList, pointList, geometrie
                             imgUrl = "http://freetextures.dynamic-softworks.com/textures/water-caustic/tex03.jpg";
                         } else {
                             imgUrl = "http://ecn.t3.tiles.virtualearth.net/tiles/a"+calcQuadKey(tile.level.levelNumber, tile.row, tile.column)+".jpeg?g=3517&mkt={culture}";
-                        }
-
+                        imgUrl = ("http://c.tile.osm.org/" +                       (tile.level.levelNumber + 1) + "/" + tile.column + "/" + tile.row + ".png");
+			}
                         polygonAttributes.imageSource = [imgUrl, null];
                     }
 
