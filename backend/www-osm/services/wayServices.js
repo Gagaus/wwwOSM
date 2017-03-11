@@ -49,8 +49,8 @@ function listen (router){
     });
 
     router.post('/polygoninfo', function(request, response) {
-        var id = request.query.id;
-        var info = JSON.parse(request.query.info);
+        var id = request.body.id;
+        var info = JSON.parse(request.body.info);
         var _callback =
         {
             parameter   :   response,
