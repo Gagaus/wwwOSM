@@ -66,7 +66,7 @@ bmngLandsatLayer.enabled = false;
 /*
  Bing imagery Layer is disabled by default
  */
-bingAerialWithLabelsLayer.enabled = true;
+bingAerialWithLabelsLayer.enabled = false;
 
 /*
  The previous layers are added to the Web World Wind instance
