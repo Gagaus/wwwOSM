@@ -279,7 +279,8 @@ var postObjectInfoByOsmID = function(callback){
      The callback object includes the way builder method call and the one for the exposure
      of the information via JSON.
      */
-    database.execute(queries.postObjectInfoByOsmID(), _params, callback);
+    database.execute(queries.postObjectInfoByOsmIDUpdate(), _params, callback);
+    database.execute(queries.postObjectInfoByOsmIDInsert(), _params, callback);
 }
 
 module.exports.getPolygonByOsmId = getPolygonByOsmId;
