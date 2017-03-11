@@ -63,6 +63,34 @@ var getPolygonByOsmId = function(id, callback) {
 };
 
 
+var getPolygonInfoByOsmId = function(id, callback) {
+
+    /*
+     Check the validity of the identifier. An error is raised if it is not satisfied
+     */
+    if (!validator.identifier(id)){
+        error.send(callback, "invalid identifier [undefined or negative or zero]");
+    }
+
+    /*
+     The way identifier is ready to be used within the query
+     */
+    var _params = [id];
+    console.log(id);
+
+    /*
+     set the current entity type
+     */
+    callback.entity = "way";
+
+    /*
+     The callback object includes the way builder method call and the one for the exposure
+     of the information via JSON.
+     */
+    database.execute(queries.getPolygonInfoByOsmId(), _params, callback);
+};
+
+
 /**
  * Retrieve the way entity with the given identifier, including its tags, properties and level of detail
  * @param id the identifier of the way entity
@@ -242,9 +270,23 @@ var getPolylinesByName = function(callback){
     database.execute(queries.getPolylinesByName(), _params, callback);
 }
 
+var postObjectInfoByOsmID = function(callback){
+    var _params = [
+        callback.id,
+        callback.info
+    ];
+    /*
+     The callback object includes the way builder method call and the one for the exposure
+     of the information via JSON.
+     */
+    database.execute(queries.postObjectInfoByOsmID(), _params, callback);
+}
+
 module.exports.getPolygonByOsmId = getPolygonByOsmId;
+module.exports.getPolygonInfoByOsmId = getPolygonInfoByOsmId;
 module.exports.getPolylineByOsmId = getPolylineByOsmId;
 module.exports.getPolygonsByBbox = getPolygonsByBBox;
 module.exports.getPolylinesByBbox = getPolylinesByBBox;
 module.exports.getPolylinesByName = getPolylinesByName;
+module.exports.postObjectInfoByOsmID = postObjectInfoByOsmID;
 module.exports.getPointsByBBox = getPointsByBBox;

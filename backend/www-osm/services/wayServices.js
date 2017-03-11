@@ -34,7 +34,35 @@ function listen (router){
      returned the object found as JSON. If the identifier is not recognized in the system,
      then an empty object is returned.
     */
+    router.get('/polygoninfo/:id', function(request, response) {
 
+        // response.send('Hello World! ' + request.params.id.toString());
+        var _callback =
+        {
+            'parameter'   :   response,
+            'list'        :
+                [   responseUtil.getInfo
+                ]
+        };
+
+        wayDao.getPolygonInfoByOsmId(request.params.id, _callback);
+    });
+
+    router.post('/polygoninfo', function(request, response) {
+        var id = request.query.id;
+        var info = JSON.parse(request.query.info);
+        var _callback =
+        {
+            parameter   :   response,
+            id          :   id,
+            info        :   info,
+            list        :
+                [   responseUtil.getInfo
+                ]
+        };
+
+        wayDao.postObjectInfoByOsmID(_callback);
+    });
 
     router.get('/polygon/:id', function(request, response) {
 
@@ -80,7 +108,7 @@ function listen (router){
 	//console.log("Request");
 	//console.log(JSON.stringify(request.body, null, 2));
 	params = JSON.parse(Object.keys(request.body)[0]);
-	//console.log(params);	
+	//console.log(params);
 
         var maxLatitude =  params.maxLatitude;
         var maxLongitude =  params.maxLongitude;

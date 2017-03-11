@@ -38,7 +38,7 @@ var print = function(callback) {
 
 
         for (var i in callback.rows) {
-	    
+
             var obj = callback.rows[i];
 	    var geom = JSON.parse(callback.rows[i].geom);
 
@@ -100,6 +100,16 @@ var printSource = function(callback){
     }
 
 }
+
+var getInfo = function(callback) {
+    callback.parameter.setHeader('Content-Type', 'application/json');
+    callback.parameter.setHeader('Access-Control-Allow-Origin', '*');
+    var info = {};
+    if (callback.rows && callback.rows[0]) {
+        info = callback.rows[0].info;
+    }
+    callback.parameter.end(JSON.stringify(info));
+};
 
 var printGeometry = function(callback) {
     callback.parameter.setHeader('Content-Type', 'application/json');
@@ -241,6 +251,7 @@ var outputLog = function(callback) {
 };
 
 exports.send = send;
+exports.getInfo = getInfo;
 exports.print = print;
 exports.printNames = printNames;
 exports.printSources = printSources;

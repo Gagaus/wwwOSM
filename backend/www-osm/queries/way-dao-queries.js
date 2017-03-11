@@ -20,6 +20,19 @@ var getPolygonByOsmId = function(){
     return _query;
 }
 
+var getPolygonInfoByOsmId = function(){
+    var _query = "SELECT info FROM object_data WHERE ID = $1::bigint";
+    return _query;
+}
+
+var postObjectInfoByOsmID = function(){
+    var _query = "UPDATE object_data " +
+                "SET info = $2::json " + 
+             "WHERE ID = $1::bigint";
+
+    return _query;
+}
+
 /**
  * Retrieves a polyline object with its properties and tags by providing its identifier.
  *
@@ -161,8 +174,10 @@ var fromList2String = function (list){
 }
 
 module.exports.getPolygonByOsmId = getPolygonByOsmId;
+module.exports.getPolygonInfoByOsmId = getPolygonInfoByOsmId;
 module.exports.getPolylineByOsmId = getPolylineByOsmId;
 module.exports.getPolygonsByBbox = getPolygonsByBbox;
 module.exports.getPolylinesByBbox = getPolylinesByBbox;
 module.exports.getPolylinesByName = getPolylinesByName;
+module.exports.postObjectInfoByOsmID = postObjectInfoByOsmID;
 module.exports.getPointsByBbox = getPointsByBbox;
