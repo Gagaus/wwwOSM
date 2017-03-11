@@ -31,7 +31,7 @@ var postObjectInfoByOsmIDUpdate = function(){
 }
 
 var postObjectInfoByOsmIDInsert = function(){
-    var _query = "INSERT INTO object_data (ID, info) SELECT ($1::bigint, $2::json) WHERE NOT EXISTS (SELECT 1 FROM object_data WHERE ID=$1)"
+    var _query = "INSERT INTO object_data (ID, info) VALUES ($1::bigint, $2::json)"
     return _query;
 }
 
@@ -181,7 +181,7 @@ module.exports.getPolylineByOsmId = getPolylineByOsmId;
 module.exports.getPolygonsByBbox = getPolygonsByBbox;
 module.exports.getPolylinesByBbox = getPolylinesByBbox;
 module.exports.getPolylinesByName = getPolylinesByName;
-module.exports.postObjectInfoByOsmID = postObjectInfoByOsmID;
+//module.exports.postObjectInfoByOsmID = postObjectInfoByOsmID;
 module.exports.postObjectInfoByOsmIDUpdate = postObjectInfoByOsmIDUpdate;
 module.exports.postObjectInfoByOsmIDInsert = postObjectInfoByOsmIDInsert;
 module.exports.getPointsByBbox = getPointsByBbox;
